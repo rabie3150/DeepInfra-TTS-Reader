@@ -1,0 +1,264 @@
+/* toolbar.css */
+
+:root {
+    /* Color Palette */
+    --tts-toolbar-bg: rgba(35, 35, 40, 0.8);    /* Slightly darker, less transparent base */
+    --tts-toolbar-blur: 12px;                  /* Increased blur */
+    --tts-toolbar-text: #e8e8e8;                /* Slightly brighter text */
+    --tts-toolbar-text-secondary: #a0a0a0;     /* For labels/values */
+    --tts-toolbar-primary: #a78bfa;            /* Adjusted Purple (Tailwind Violet-400) */
+    --tts-toolbar-secondary: #5eead4;           /* Adjusted Teal (Tailwind Teal-300) */
+    --tts-toolbar-border: rgba(255, 255, 255, 0.15);/* Slightly more visible border */
+    --tts-control-bg-hover: rgba(255, 255, 255, 0.1);
+    --tts-control-bg-active: rgba(255, 255, 255, 0.15);
+    --tts-slider-track: #4a4a52;               /* Darker track */
+    --tts-slider-thumb: var(--tts-toolbar-primary);
+    --tts-progress-bg: #4a4a52;                /* Match slider track */
+    --tts-progress-fill: var(--tts-toolbar-secondary);
+
+    /* Dimensions & Effects */
+    --tts-toolbar-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Softer, larger shadow */
+    --tts-toolbar-radius: 16px;                 /* More rounded */
+    --tts-control-size: 38px;                   /* Slightly larger buttons */
+    --tts-icon-size: 20px;
+    --tts-transition-duration: 0.35s;           /* Base transition speed */
+}
+
+#tts-floating-toolbar {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: var(--tts-toolbar-bg);
+    color: var(--tts-toolbar-text);
+    padding: 18px 22px;                       /* Adjusted padding */
+    border-radius: var(--tts-toolbar-radius);
+    box-shadow: var(--tts-toolbar-shadow);
+    z-index: 2147483647;
+    font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /* Modern font stack */
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;                                /* Increased gap */
+    min-width: 260px;                         /* Slightly wider */
+    backdrop-filter: blur(var(--tts-toolbar-blur));
+    -webkit-backdrop-filter: blur(var(--tts-toolbar-blur));
+    border: 1px solid var(--tts-toolbar-border);
+    opacity: 0;                               /* Start hidden */
+    transform: scale(0.95) translateY(10px);  /* Start slightly smaller and lower */
+    transform-origin: bottom right;           /* Scale from corner */
+    transition: opacity var(--tts-transition-duration) cubic-bezier(0.4, 0, 0.2, 1),
+                transform var(--tts-transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+#tts-floating-toolbar.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);        /* Scale up to full size */
+    pointer-events: auto;
+}
+
+/* --- Controls, Progress Bar, Sliders, Close Button --- */
+/* --- Controls --- */
+.tts-controls-container {
+    display: flex;
+    justify-content: center;
+    /* gap: 20px; */ /* Reduced from 20px */
+    gap: 15px; /* Adjust as needed for 3 buttons */
+    align-items: center;
+}
+
+.tts-button {
+    background: none;
+    border: none;
+    color: var(--tts-toolbar-text);
+    padding: 0;                               /* Remove padding, rely on size */
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tts-control-size);
+    height: var(--tts-control-size);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.tts-button:hover {
+    background-color: var(--tts-control-bg-hover);
+    transform: scale(1.05);                   /* Slight scale on hover */
+}
+
+.tts-button:active {
+    background-color: var(--tts-control-bg-active);
+    transform: scale(0.95);                   /* Scale down on press */
+}
+
+.tts-button svg {
+    width: var(--tts-icon-size);
+    height: var(--tts-icon-size);
+    fill: currentColor;
+}
+
+
+/* --- Progress Bar --- */
+.tts-progress-container {
+    width: 100%;
+    height: 8px;                              /* Slightly thicker */
+    background-color: var(--tts-progress-bg);
+    border-radius: 4px;                       /* Match height/2 */
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+.tts-progress-container:hover {
+    transform: scaleY(1.2);                   /* Slightly expand vertically on hover */
+}
+
+
+.tts-progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--tts-progress-fill);
+    border-radius: 4px;
+    transition: width 0.15s ease-out;         /* Smoother fill animation */
+    box-shadow: 0 0 8px 0px color-mix(in srgb, var(--tts-progress-fill) 70%, transparent); /* Subtle glow */
+}
+
+
+/* --- Sliders --- */
+.tts-sliders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;                                /* Spacing between sliders */
+}
+
+.tts-slider-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;                                /* Gap between label, slider, value */
+}
+
+.tts-slider-group label {
+    min-width: 50px;                          /* Keep label alignment */
+    text-align: right;
+    font-size: 0.85em;                        /* Smaller label */
+    color: var(--tts-toolbar-text-secondary);
+}
+
+/* Common slider track styling */
+.tts-slider-group input[type="range"] {
+    flex-grow: 1;
+    margin: 0;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;                              /* Track height */
+    background: var(--tts-slider-track);
+    border-radius: 2.5px;
+    outline: none;
+    transition: opacity 0.2s ease;
+}
+
+/* Common slider thumb styling */
+.tts-slider-thumb-styles { /* Use a placeholder class or apply directly */
+    width: 16px;
+    height: 16px;
+    background: var(--tts-slider-thumb);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--tts-toolbar-bg); /* Border helps thumb pop */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);   /* Subtle shadow on thumb */
+    transition: transform 0.15s ease;
+}
+
+/* Applying thumb styles for WebKit browsers */
+.tts-slider-group input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    margin-top: -5.5px; /* Center thumb vertically on track */
+    /* Apply common styles */
+    width: 16px;
+    height: 16px;
+    background: var(--tts-slider-thumb);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--tts-toolbar-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    transition: transform 0.15s ease;
+}
+
+/* Applying thumb styles for Firefox */
+.tts-slider-group input[type="range"]::-moz-range-thumb {
+    /* Apply common styles */
+    width: 16px;
+    height: 16px;
+    background: var(--tts-slider-thumb);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--tts-toolbar-bg); /* Apply border directly for FF */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    transition: transform 0.15s ease;
+}
+
+/* Hover/Active states for thumb */
+.tts-slider-group input[type="range"]:hover::-webkit-slider-thumb,
+.tts-slider-group input[type="range"]:focus::-webkit-slider-thumb { /* Add focus style */
+     transform: scale(1.2);
+}
+.tts-slider-group input[type="range"]:hover::-moz-range-thumb,
+.tts-slider-group input[type="range"]:focus::-moz-range-thumb {
+     transform: scale(1.2);
+}
+
+.tts-slider-group input[type="range"]:active::-webkit-slider-thumb {
+     transform: scale(1.1); /* Slightly smaller scale on active drag */
+}
+.tts-slider-group input[type="range"]:active::-moz-range-thumb {
+     transform: scale(1.1);
+}
+
+
+/* Slider value display */
+.tts-slider-value {
+    min-width: 38px; /* Ensure enough space for "0.00" */
+    text-align: right;
+    font-size: 0.85em;
+    color: var(--tts-toolbar-text-secondary);
+    font-variant-numeric: tabular-nums; /* Keep numbers aligned */
+}
+
+/* Style for the close button */
+.tts-close-button {
+    position: absolute;
+    top: 8px;     /* Adjust position */
+    right: 8px;   /* Adjust position */
+    background: none;
+    border: none;
+    color: var(--tts-toolbar-text-secondary); /* Dimmer color */
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;  /* Smaller close button */
+    height: 28px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.tts-close-button:hover {
+    background-color: var(--tts-control-bg-hover);
+    color: var(--tts-toolbar-text); /* Brighter on hover */
+    transform: scale(1.1);
+}
+
+.tts-close-button:active {
+    background-color: var(--tts-control-bg-active);
+    transform: scale(0.95);
+}
+
+.tts-close-button svg {
+    width: 16px; /* Smaller icon */
+    height: 16px;
+    fill: currentColor;
+}

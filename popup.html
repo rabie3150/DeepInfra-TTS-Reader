@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DeepInfra TTS Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1a1a1f;       /* Darker base background */
+            --bg-secondary: #25252c;     /* Slightly lighter for sections */
+            --bg-tertiary: #303038;      /* Input/select background */
+            --text-primary: #e8e8e8;     /* Main text */
+            --text-secondary: #a0a0a0;   /* Labels, hints */
+            --text-tertiary: #707078;    /* Disabled text */
+            --accent-primary: #a78bfa;   /* Purple accent (buttons, toggles) */
+            --accent-secondary: #7dd3fc;  /* Light blue accent (focus rings) */
+            --border-color: #404048;      /* Subtle borders */
+            --error-color: #f87171;       /* Red for errors */
+            --success-color: #4ade80;     /* Green for success */
+
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 16px;
+            --spacing-xl: 20px;
+
+            --font-family-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-main);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 14px;
+            min-width: 340px; /* Slightly wider */
+            margin: 0;
+        }
+
+        .container {
+            padding: var(--spacing-lg) var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* --- Section Styling --- */
+        .settings-section {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        /* --- API Key Section --- */
+        .api-toggle-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Push toggle switch to the right */
+            cursor: pointer; /* Make the whole area clickable */
+            padding: var(--spacing-sm) 0; /* Add some vertical padding */
+        }
+
+        .api-toggle-section label { /* Label for the toggle */
+             font-weight: 500;
+             color: var(--text-primary);
+             flex-grow: 1; /* Allow label to take space */
+             margin-right: var(--spacing-md);
+        }
+
+        /* Simple Checkbox Toggle Style */
+        input[type="checkbox"].toggle-switch {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 40px;
+            height: 22px;
+            background-color: var(--bg-tertiary);
+            border-radius: 11px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            flex-shrink: 0; /* Prevent shrinking */
+            border: 1px solid var(--border-color);
+        }
+
+        input[type="checkbox"].toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--text-secondary);
+            top: 2px;
+            left: 3px;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        input[type="checkbox"].toggle-switch:checked {
+            background-color: var(--accent-primary);
+            border-color: transparent;
+        }
+
+        input[type="checkbox"].toggle-switch:checked::before {
+            transform: translateX(18px);
+            background-color: var(--bg-primary); /* White thumb on accent */
+        }
+
+
+        .api-details {
+            border-top: 1px solid var(--border-color);
+            padding-top: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+            max-height: 0; /* Collapsed by default */
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        /* Add this class via JS when toggle is checked */
+        .api-details.visible {
+             max-height: 300px; /* Adjust as needed */
+             opacity: 1;
+        }
+
+        label {
+            font-weight: 500;
+            color: var(--text-secondary);
+            display: block; /* Ensure labels take full width */
+            margin-bottom: var(--spacing-xs);
+        }
+
+        input[type="password"],
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-primary);
+            font-size: inherit;
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-secondary);
+            box-shadow: 0 0 0 2px rgba(var(--accent-secondary), 0.3); /* Focus ring */
+        }
+
+        input:disabled, select:disabled {
+            background-color: #2a2a30; /* Slightly different disabled bg */
+            color: var(--text-tertiary);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .info-text a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+        }
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* --- Voice & Format Section --- */
+        .voice-controls {
+             display: grid;
+             grid-template-columns: 1fr 1fr; /* Two columns */
+             gap: var(--spacing-md);
+        }
+        .voice-controls .setting-group:last-child { /* Make format selector span full width */
+             grid-column: 1 / -1;
+        }
+
+
+        /* --- Speed Control --- */
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        input[type="range"] {
+            flex-grow: 1;
+            height: 6px;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background: linear-gradient(to right, var(--accent-primary) 0%, var(--accent-primary) var(--value-percent, 0%), var(--bg-tertiary) var(--value-percent, 0%), var(--bg-tertiary) 100%);
+            border-radius: 3px;
+            outline: none;
+            border: 1px solid var(--border-color);
+            transition: background 0.1s ease-in-out; /* Transition track fill */
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid var(--bg-secondary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            margin-top: -6px; /* Adjust for vertical centering */
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid var(--bg-secondary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+         /* Style for focus on range slider */
+        input[type="range"]:focus {
+             box-shadow: 0 0 0 2px rgba(var(--accent-secondary), 0.3);
+        }
+
+
+        #speed-value {
+            font-weight: 500;
+            color: var(--text-primary);
+            min-width: 35px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+
+        /* --- Actions Section --- */
+        button#save-btn {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            background-color: var(--accent-primary);
+            color: var(--bg-primary); /* Dark text on button */
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        button#save-btn:hover {
+            background-color: #9575cd; /* Slightly lighter purple */
+        }
+        button#save-btn:active {
+             transform: scale(0.98);
+        }
+
+        #status-message {
+            font-size: 13px;
+            text-align: center;
+            min-height: 1.4em; /* Reserve space */
+            margin-top: var(--spacing-sm);
+            font-weight: 500;
+        }
+        #status-message.error { color: var(--error-color); }
+        #status-message.success { color: var(--success-color); }
+
+
+        /* --- Footer Link --- */
+        .doc-link {
+            text-align: center;
+            font-size: 12px;
+            margin-top: var(--spacing-md);
+        }
+         .doc-link p { color: var(--text-secondary); }
+        .doc-link a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+        }
+        .doc-link a:hover { text-decoration: underline; }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TTS Settings</h1>
+
+        <!-- API Key Section -->
+        <div class="settings-section api-section">
+            <div class="api-toggle-section" id="api-toggle-clickable">
+                <label for="use-api-key-toggle">Use API Key (Premium)</label>
+                <input type="checkbox" id="use-api-key-toggle" class="toggle-switch">
+            </div>
+
+            <!-- Details shown when toggle is checked -->
+            <div class="api-details" id="api-details-content">
+                 <p class="info-text" style="margin-bottom: var(--spacing-sm);">
+                    Enables word-level highlighting & potentially improved reliability/voices. Requires a free or paid DeepInfra account.
+                </p>
+                <div class="setting-group">
+                    <label for="api-token">DeepInfra API Token:</label>
+                    <input id="api-token" type="password" placeholder="Paste your token here">
+                </div>
+                <p class="info-text">
+                    Get yours at <a href="https://deepinfra.com/dash/api_keys" target="_blank">DeepInfra Keys</a>. Stored locally.
+                </p>
+            </div>
+        </div>
+
+        <!-- Voice & Format Section -->
+        <div class="settings-section voice-section">
+             <div class="voice-controls">
+                 <div class="setting-group">
+                    <label for="language-selector">Language:</label>
+                    <select id="language-selector"></select>
+                 </div>
+                 <div class="setting-group">
+                    <label for="voice-selector">Voice:</label>
+                    <select id="voice-selector"></select>
+                 </div>
+                 <div class="setting-group">
+                    <label for="output-format">Output Format:</label>
+                    <select id="output-format">
+                        <option value="mp3">MP3</option>
+                        <option value="wav">WAV</option>
+                        <option value="opus">Opus</option>
+                        <option value="flac">FLAC</option>
+                    </select>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Playback Section -->
+        <div class="settings-section playback-section">
+            <div class="setting-group">
+                <label for="speed-input">Playback Speed:</label>
+                <div class="speed-control">
+                    <input id="speed-input" type="range" min="0.25" max="4.0" step="0.05" value="1.0">
+                    <span id="speed-value">1.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions Section -->
+        <div class="actions-section">
+            <button id="save-btn">Save Settings</button>
+            <div id="status-message"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="doc-link">
+            <p>Model: <a href="https://deepinfra.com/hexgrad/Kokoro-82M/api" target="_blank">Kokoro-82M</a></p>
+        </div>
+
+    </div> <!-- End container -->
+
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+[
+    {
+      "code": "af_heart",
+      "language": "American English",
+      "title": "af_heart (🚺❤️, A)"
+    },
+    {
+      "code": "af_alloy",
+      "language": "American English",
+      "title": "af_alloy (🚺, B, MM minutes, C)"
+    },
+    {
+      "code": "af_aoede",
+      "language": "American English",
+      "title": "af_aoede (🚺, B, H hours, C+)"
+    },
+    {
+      "code": "af_bella",
+      "language": "American English",
+      "title": "af_bella (🚺🔥, A, HH hours, A-)"
+    },
+    {
+      "code": "af_jessica",
+      "language": "American English",
+      "title": "af_jessica (🚺, C, MM minutes, D)"
+    },
+    {
+      "code": "af_kore",
+      "language": "American English",
+      "title": "af_kore (🚺, B, H hours, C+)"
+    },
+    {
+      "code": "af_nicole",
+      "language": "American English",
+      "title": "af_nicole (🚺🎧, B, HH hours, B-)"
+    },
+    {
+      "code": "af_nova",
+      "language": "American English",
+      "title": "af_nova (🚺, B, MM minutes, C)"
+    },
+    {
+      "code": "af_river",
+      "language": "American English",
+      "title": "af_river (🚺, C, MM minutes, D)"
+    },
+    {
+      "code": "af_sarah",
+      "language": "American English",
+      "title": "af_sarah (🚺, B, H hours, C+)"
+    },
+    {
+      "code": "af_sky",
+      "language": "American English",
+      "title": "af_sky (🚺, B, M minutes 🤏, C-)"
+    },
+    {
+      "code": "am_adam",
+      "language": "American English",
+      "title": "am_adam (🚹, D, H hours, F+)"
+    },
+    {
+      "code": "am_echo",
+      "language": "American English",
+      "title": "am_echo (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "am_eric",
+      "language": "American English",
+      "title": "am_eric (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "am_fenrir",
+      "language": "American English",
+      "title": "am_fenrir (🚹, B, H hours, C+)"
+    },
+    {
+      "code": "am_liam",
+      "language": "American English",
+      "title": "am_liam (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "am_michael",
+      "language": "American English",
+      "title": "am_michael (🚹, B, H hours, C+)"
+    },
+    {
+      "code": "am_onyx",
+      "language": "American English",
+      "title": "am_onyx (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "am_puck",
+      "language": "American English",
+      "title": "am_puck (🚹, B, H hours, C+)"
+    },
+    {
+      "code": "am_santa",
+      "language": "American English",
+      "title": "am_santa (🚹, C, M minutes 🤏, D-)"
+    },
+    {
+      "code": "bf_alice",
+      "language": "British English",
+      "title": "bf_alice (🚺, C, MM minutes, D)"
+    },
+    {
+      "code": "bf_emma",
+      "language": "British English",
+      "title": "bf_emma (🚺, B, HH hours, B-)"
+    },
+    {
+      "code": "bf_isabella",
+      "language": "British English",
+      "title": "bf_isabella (🚺, B, MM minutes, C)"
+    },
+    {
+      "code": "bf_lily",
+      "language": "British English",
+      "title": "bf_lily (🚺, C, MM minutes, D)"
+    },
+    {
+      "code": "bm_daniel",
+      "language": "British English",
+      "title": "bm_daniel (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "bm_fable",
+      "language": "British English",
+      "title": "bm_fable (🚹, B, MM minutes, C)"
+    },
+    {
+      "code": "bm_george",
+      "language": "British English",
+      "title": "bm_george (🚹, B, MM minutes, C)"
+    },
+    {
+      "code": "bm_lewis",
+      "language": "British English",
+      "title": "bm_lewis (🚹, C, H hours, D+)"
+    },
+    {
+      "code": "jf_alpha",
+      "language": "Japanese",
+      "title": "jf_alpha (🚺, B, H hours, C+)"
+    },
+    {
+      "code": "jf_gongitsune",
+      "language": "Japanese",
+      "title": "jf_gongitsune (🚺, B, MM minutes, C)"
+    },
+    {
+      "code": "jf_nezumi",
+      "language": "Japanese",
+      "title": "jf_nezumi (🚺, B, M minutes 🤏, C-)"
+    },
+    {
+      "code": "jf_tebukuro",
+      "language": "Japanese",
+      "title": "jf_tebukuro (🚺, B, MM minutes, C)"
+    },
+    {
+      "code": "jm_kumo",
+      "language": "Japanese",
+      "title": "jm_kumo (🚹, B, M minutes 🤏, C-)"
+    },
+    {
+      "code": "zf_xiaobei",
+      "language": "Mandarin Chinese",
+      "title": "zf_xiaobei (🚺, C, MM minutes, D)"
+    },
+    {
+      "code": "zf_xiaoni",
+      "language": "Mandarin Chinese",
+      "title": "zf_xiaoni (🚺, C, MM minutes, D)"
+    },
+    {
+      "code": "zf_xiaoxiao",
+      "language": "Mandarin Chinese",
+      "title": "zf_xiaoxiao (🚺, C, MM minutes, D)"
+    },
+    {
+      "code": "zf_xiaoyi",
+      "language": "Mandarin Chinese",
+      "title": "zf_xiaoyi (🚺, C, MM minutes, D)"
+    },
+    {
+      "code": "zm_yunjian",
+      "language": "Mandarin Chinese",
+      "title": "zm_yunjian (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "zm_yunxi",
+      "language": "Mandarin Chinese",
+      "title": "zm_yunxi (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "zm_yunxia",
+      "language": "Mandarin Chinese",
+      "title": "zm_yunxia (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "zm_yunyang",
+      "language": "Mandarin Chinese",
+      "title": "zm_yunyang (🚹, C, MM minutes, D)"
+    },
+    {
+      "code": "ef_dora",
+      "language": "Spanish",
+      "title": "ef_dora (🚺)"
+    },
+    {
+      "code": "em_alex",
+      "language": "Spanish",
+      "title": "em_alex (🚹)"
+    },
+    {
+      "code": "em_santa",
+      "language": "Spanish",
+      "title": "em_santa (🚹)"
+    },
+    {
+      "code": "ff_siwis",
+      "language": "French",
+      "title": "ff_siwis (🚺, B, <11 hours, B-)"
+    },
+    {
+      "code": "hf_alpha",
+      "language": "Hindi",
+      "title": "hf_alpha (🚺, B, MM minutes, C)"
+    },
+    {
+      "code": "hf_beta",
+      "language": "Hindi",
+      "title": "hf_beta (🚺, B, MM minutes, C)"
+    },
+    {
+      "code": "hm_omega",
+      "language": "Hindi",
+      "title": "hm_omega (🚹, B, MM minutes, C)"
+    },
+    {
+      "code": "hm_psi",
+      "language": "Hindi",
+      "title": "hm_psi (🚹, B, MM minutes, C)"
+    },
+    {
+      "code": "if_sara",
+      "language": "Italian",
+      "title": "if_sara (🚺, B, MM minutes, C)"
+    },
+    {
+      "code": "im_nicola",
+      "language": "Italian",
+      "title": "im_nicola (🚹, B, MM minutes, C)"
+    },
+    {
+      "code": "pf_dora",
+      "language": "Brazilian Portuguese",
+      "title": "pf_dora (🚺)"
+    },
+    {
+      "code": "pm_alex",
+      "language": "Brazilian Portuguese",
+      "title": "pm_alex (🚹)"
+    },
+    {
+      "code": "pm_santa",
+      "language": "Brazilian Portuguese",
+      "title": "pm_santa (🚹)"
+    }
+]
