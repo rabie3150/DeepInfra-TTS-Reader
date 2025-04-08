@@ -104,7 +104,6 @@ async function processText(text, tab, startWordIndex = -1) {
   text = text.trim();
 
   try {
-    // --- REMOVED: showLoading message ---
 
     const settings = await getSettings();
     if (settings.useApiKey && !settings.apiToken) {
@@ -119,10 +118,8 @@ async function processText(text, tab, startWordIndex = -1) {
       audioDataUrl = cachedData.audioDataUrl;
       wordsData = cachedData.wordsData;
       //console.log(`Using cached TTS (Mode: ${settings.useApiKey ? 'Paid' : 'Free'}) Key: ${cacheKey}`);
-      // --- REMOVED: hideLoading message ---
     } else {
       //console.log(`Fetching new TTS (Mode: ${settings.useApiKey ? 'Paid' : 'Free'}) Key: ${cacheKey}`);
-      // --- REMOVED: finally block with hideLoading message ---
       // Fetch directly
       const ttsResult = await fetchTTS(text, settings);
       audioDataUrl = ttsResult.audioDataUrl;
@@ -147,7 +144,6 @@ async function processText(text, tab, startWordIndex = -1) {
     console.error("Error in processText:", error);
     const errorMessage = error.message || "An unknown error occurred.";
     showErrorNotification("TTS Error", errorMessage);
-    // --- REMOVED: Attempt to hide loading indicator on error ---
   }
 }
 
