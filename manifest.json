@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "DeepInfra TTS (Reader)", 
-  "version": "1.0", 
-  "description": "Right-click text to read aloud from that point, or read selected text. Optional API key.", 
+  "name": "DeepInfra TTS (Reader)",
+  "version": "1.0",
+  "description": "Right-click text to read aloud from that point, or read selected text. Optional API key.",
   "permissions": [
     "storage",
     "contextMenus",
@@ -32,5 +32,14 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
+  },
+  "commands": {
+    "start-reading": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+R",
+        "mac": "Command+Shift+R"
+      },
+      "description": "Start reading the selected text"
+    }
   }
 }
